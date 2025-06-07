@@ -31,29 +31,31 @@ function createHeart() {
 button.addEventListener("click", () => {
   audio.play();
 
-  const numberOfBoxes = 520;
+  // Tạo hộp thoại vô hạn với khoảng cách đều
+  const boxInterval = setInterval(() => {
+    const box = document.createElement("div");
+    box.className = "box";
+    box.innerHTML = `
+      <div class="box-header">Đầy Bộ Nhớ</div>
+      <div class="box-body">Anh Nhớ Em</div>
+    `;
 
-  for (let i = 0; i < numberOfBoxes; i++) {
+    const maxX = window.innerWidth - 240;
+    const maxY = window.innerHeight - 100;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    box.style.left = `${x}px`;
+    box.style.top = `${y}px`;
+
+    container.appendChild(box);
+
+    // Tự xoá sau 6 giây để tránh lag
     setTimeout(() => {
-      const box = document.createElement("div");
-      box.className = "box";
-      box.innerHTML = `
-        <div class="box-header">Đầy Bộ Nhớ</div>
-        <div class="box-body">Anh Nhớ Em</div>
-      `;
-
-      const maxX = window.innerWidth - 240;
-      const maxY = window.innerHeight - 100;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      box.style.left = `${x}px`;
-      box.style.top = `${y}px`;
-
-      container.appendChild(box);
-    }, i * 100);
-  }
+      box.remove();
+    }, 6000);
+  }, 100); // Cứ mỗi 100ms tạo 1 hộp mới
 
   // Tạo tim bay mãi mãi
   setInterval(createHeart, 50);
