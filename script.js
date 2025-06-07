@@ -31,7 +31,7 @@ function createHeart() {
 button.addEventListener("click", () => {
   audio.play();
 
-  const numberOfBoxes = 1402;
+  const numberOfBoxes = 520;
 
   for (let i = 0; i < numberOfBoxes; i++) {
     setTimeout(() => {
