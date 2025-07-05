@@ -164,3 +164,12 @@ button:hover {
     opacity: 0;
   }
 }
+input {
+  padding: 15px 25px;
+  font-size: 22px;  /* To chữ hơn */
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 20px;
+  width: 400px;     /* To hơn */
+  max-width: 90%;
+}
